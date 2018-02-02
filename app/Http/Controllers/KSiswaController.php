@@ -16,26 +16,11 @@ class KSiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,Builder $htmlBuilder)
+    public function index()
     {
         //
-        if ($request->ajax()){
-            $siswas = Kehadiran_siswa::select(['id','nama','kelas','keterangan']);
-            return Datatables::of($siswas)
-            ->addColumn('action', function($siswas){
-                return view('datatable._action', [
-                    'model' => $siswas,
-                    'form_url' => route('ksiswa.destroy', $siswas->id),
-                    'edit_url' => route('ksiswa.edit', $siswas->id),
-                    'confirm_message' => 'Yakin Mau Menghapus ' . $siswas->nama.'?']);
-            })->make(true);
-        }
-        $html = $htmlBuilder
-        ->addColumn(['data'=>'nama','name'=>'nama','title'=>'Nama'])
-        ->addColumn(['data'=>'kelas','name'=>'kelas','title'=>'kelas'])
-        ->addColumn(['data'=>'keterangan','name'=>'keterangan','title'=>'keterangan'])
-        ->addColumn(['data' => 'action', 'name'=>'action', 'title'=>'Action','orderable'=>false, 'searchable'=>false]);
-        return view('ksiswa.index')->with(compact('html'));
+        $siswas=Kehadiran_siswa::all();
+        return view('ksiswa.index', compact('siswas'));
     }
 
     /**

@@ -23,6 +23,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
 	Route::resource('mobil','MobilController');
 	Route::resource('supir','SupirController');
 	Route::resource('siswa','SiswaController');
+	Route::resource('guru','GuruController');
+	Route::resource('jurusan','JurusanController');
 	Route::resource('ksiswa','KSiswaController');
 	Route::resource('kguru','KGuruController');
 	Route::resource('siswa_terlambat','TerlambatController');

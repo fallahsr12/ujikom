@@ -23,7 +23,7 @@
 			
 			<div class="form-group">
 				<label class="control-lable">Nama</label>
-				<input type="text" name="nama" class="form-control" required="" value="{{$siswas->nama}}">
+				<input type="text" name="nama_siswa" class="form-control" required="" value="{{$siswas->nama_siswa}}">
 			</div>
 
 			<div class="form-group">

@@ -51,6 +51,8 @@
                         <!-- Authentication Links -->
                         @role('admin')
                             <li><a href="{{ route('siswa.index') }}">Siswa</a></li>
+                            <li><a href="{{ route('guru.index') }}">Guru</a></li>
+                            <li><a href="{{ route('jurusan.index') }}">Jurusan</a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">+ Tambah Data<i class="icon-angle-down"></i></a>

@@ -7,11 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class siswa extends Model
 {
 	protected $table='siswa';
- 	protected $fillable=['id','nama','kelas'];
- 	protected $visible=['id','nama','kelas'];
+ 	protected $fillable=['id','nama_siswa','kelas','id_jurusan'];
+ 	protected $visible=['id','nama_siswa','kelas','id_jurusan'];
 
- 	public function Siswa_terlambat()
- 	{
- 		return $this->hasMany('App\Siswa_terlambat');
- 	}
 }

@@ -16,25 +16,11 @@ class SiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,Builder $htmlBuilder)
+    public function index()
     {
         //
-        if ($request->ajax()){
-            $siswas = siswa::select(['id','nama','kelas']);
-            return Datatables::of($siswas)
-            ->addColumn('action', function($siswas){
-                return view('datatable._action', [
-                    'model' => $siswas,
-                    'form_url' => route('siswa.destroy', $siswas->id),
-                    'edit_url' => route('siswa.edit', $siswas->id),
-                    'confirm_message' => 'Yakin Mau Menghapus ' . $siswas->nama.'?']);
-            })->make(true);
-        }
-        $html = $htmlBuilder
-        ->addColumn(['data'=>'nama','name'=>'nama','title'=>'Nama'])
-        ->addColumn(['data'=>'kelas','name'=>'kelas','title'=>'Kelas'])
-        ->addColumn(['data' => 'action', 'name'=>'action', 'title'=>'Action','orderable'=>false, 'searchable'=>false]);
-        return view('siswa.index')->with(compact('html'));
+        $siswas=siswa::all();
+        return view('siswa.index', compact('siswas'));
     }
 
 
@@ -59,9 +45,9 @@ class SiswaController extends Controller
     {
         //
         $siswas = new siswa;
-        $siswas->nama=$request->nama;
+        $siswas->nama_siswa=$request->nama_siswa;
         $siswas->kelas =$request->kelas;
-        
+        $siswas->id_jurusan=$request->id_jurusan;
         $siswas->save();
         return redirect('/admin/siswa');
     }
@@ -106,6 +92,7 @@ class SiswaController extends Controller
         $siswas = siswa::findOrfail($id);
         $siswas->nama = $request->nama;
         $siswas->kelas = $request->kelas;
+        $siswas->id_jurusan=$request->id_jurusan;
         $siswas->save();
         return redirect()->route('siswa.index');
     }

@@ -21,12 +21,17 @@
 
 			<div class="form-group">
 				<label class="control-lable">Nama</label>
-				<input type="text" name="nama" class="form-control" required="">
+				<input type="text" name="nama_siswa" class="form-control" required="">
 			</div>
 
 			<div class="form-group">
 				<label class="control-lable">Kelas</label>
 				<input type="text" name="kelas" class="form-control" required="">
+			</div>
+
+			<div class="form-group">
+				<label class="control-lable">Jurusan</label>
+				<input type="text" name="jurusan" class="form-control" required="">
 			</div>
 
 			<br>

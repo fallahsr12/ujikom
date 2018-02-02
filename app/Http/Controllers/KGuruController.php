@@ -8,6 +8,7 @@ use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
 use File;
+use App\Guru;
 
 class KGuruController extends Controller
 {
@@ -16,25 +17,11 @@ class KGuruController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,Builder $htmlBuilder)
+    public function index()
     {
         //
-        if ($request->ajax()){
-            $siswas = Kehadiran_guru::select(['id','nama','keterangan']);
-            return Datatables::of($siswas)
-            ->addColumn('action', function($siswas){
-                return view('datatable._action', [
-                    'model' => $siswas,
-                    'form_url' => route('kguru.destroy', $siswas->id),
-                    'edit_url' => route('kguru.edit', $siswas->id),
-                    'confirm_message' => 'Yakin Mau Menghapus ' . $siswas->nama.'?']);
-            })->make(true);
-        }
-        $html = $htmlBuilder
-        ->addColumn(['data'=>'nama','name'=>'nama','title'=>'Nama'])
-        ->addColumn(['data'=>'keterangan','name'=>'keterangan','title'=>'keterangan'])
-        ->addColumn(['data' => 'action', 'name'=>'action', 'title'=>'Action','orderable'=>false, 'searchable'=>false]);
-        return view('kguru.index')->with(compact('html'));
+        $siswas=Kehadiran_guru::with('guru')->get();
+        return view('kguru.index', compact('siswas','guru'));
     }
 
     /**
@@ -58,7 +45,7 @@ class KGuruController extends Controller
     {
         //
         $siswas = new Kehadiran_guru;
-        $siswas->nama=$request->nama;
+        $siswas->id_guru=$request->nama;
         $siswas->keterangan =$request->keterangan;
         
         $siswas->save();
