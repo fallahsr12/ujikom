@@ -3,16 +3,16 @@
 <div class="container">
 <div class="box">
             <div class="box-header" style="background: #9932cc">
-              <h3 class="box-title" >Data Jurusan</h3>
+              <h3 class="box-title" >Data Kelas</h3>
             </div><br>
-            &nbsp&nbsp<a class="btn btn-primary" href="{{ route('jurusan.create') }}">Tambah</a>
+            &nbsp&nbsp<a class="btn btn-primary" href="{{ route('kelas.create') }}">Tambah</a>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="data" class="table table-striped">
                 <thead>
                 <tr>
                  	<th>No</th>
-					<th>Nama Jurusan</th>
+					<th>Kelas</th>
 					<th>Action</th>
                 </tr>
                 </thead>
@@ -21,14 +21,14 @@
 				@foreach($siswas as $data)
 				<tr>
 					<td>{{$no++}}</td>
-					<td>{{$data->jurusan}}</td>
+					<td>{{$data->kelas}}</td>
 
 					<td>
-            <form action="{{route('jurusan.destroy',$data->id)}}" method="post">
+            <form action="{{route('kelas.destroy',$data->id)}}" method="post">
             <input type="hidden" name="_method" value="Delete">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <a data-toggle="tooltip" data-placement="top" title="Edit Data" class="btn btn-success" href="/jurusan/{{$data->id}}/edit"><i class="fa fa-edit"></i></a>
-            <a data-toggle="tooltip" data-placement="top" title="Detail Jurusan" class="btn btn-warning" href="{{url('/jurusan/'.$data->id)}}/detail"><i class="fa fa-info"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Data" class="btn btn-success" href="/admin/kelas/{{$data->id}}/edit"><i class="fa fa-edit"></i></a>
+            
             <button data-toggle="tooltip" data-placement="top" title="Hapus Data" type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Akan Menghapus ?')"><i class="fa fa-trash"></i></button>
             {{csrf_field()}}
           </form>

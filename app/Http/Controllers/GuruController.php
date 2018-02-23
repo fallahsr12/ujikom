@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Guru;
+use App\Mapel;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
@@ -19,8 +20,9 @@ class GuruController extends Controller
     public function index()
     {
         //
+        $mapel=Mapel::all();
         $siswas=Guru::all();
-        return view('guru.index', compact('siswas'));
+        return view('guru.index', compact('siswas','mapel'));
     }
 
     /**
@@ -31,7 +33,8 @@ class GuruController extends Controller
     public function create()
     {
         //
-        return view('guru.create');
+        $mapel=Mapel::all();
+        return view('guru.create',compact('mapel'));
     }
 
     /**
@@ -44,8 +47,9 @@ class GuruController extends Controller
     {
         //
         $siswas = new Guru;
+        $siswas->nik=$request->nik;
         $siswas->nama_guru=$request->nama_guru;
-        $siswas->mapel =$request->mapel;
+        $siswas->id_mapel =$request->id_mapel;
         
         $siswas->save();
         return redirect('/admin/guru');
@@ -74,7 +78,8 @@ class GuruController extends Controller
     {
         //
         $siswas = Guru::findOrfail($id);
-        return view('guru.edit', compact('siswas'));
+        $mapel = Mapel::all();
+        return view('guru.edit', compact('siswas','mapel'));
     }
 
     /**
@@ -89,7 +94,7 @@ class GuruController extends Controller
         //
         $siswas = Guru::findOrfail($id);
         $siswas->nama_guru = $request->nama_guru;
-        $siswas->mapel = $request->mapel;
+        $siswas->id_mapel = $request->id_mapel;
         $siswas->save();
         return redirect()->route('guru.index');
     }

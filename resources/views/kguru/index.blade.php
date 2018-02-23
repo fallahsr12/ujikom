@@ -29,8 +29,8 @@
             <form action="{{route('kguru.destroy',$data->id)}}" method="post">
             <input type="hidden" name="_method" value="Delete">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <a data-toggle="tooltip" data-placement="top" title="Edit Data" class="btn btn-success" href="/kguru/{{$data->id}}/edit"><i class="fa fa-edit"></i></a>
-            <a data-toggle="tooltip" data-placement="top" title="Detail Guru" class="btn btn-warning" href="{{url('/kguru/'.$data->id)}}/detail"><i class="fa fa-info"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Data" class="btn btn-success" href="/admin/kguru/{{$data->id}}/edit"><i class="fa fa-edit"></i></a>
+            
             <button data-toggle="tooltip" data-placement="top" title="Hapus Data" type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Akan Menghapus ?')"><i class="fa fa-trash"></i></button>
             {{csrf_field()}}
           </form>
@@ -44,7 +44,6 @@
             <!-- /.box-body -->
           </div>
 </div>
-
 
 @endsection
 @section('scripts')

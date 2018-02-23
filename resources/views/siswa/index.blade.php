@@ -12,9 +12,9 @@
                 <thead>
                 <tr>
                  	<th>No</th>
-					<th>Kelas</th>
-          <th>Jurusan</th>
-					<th>Action</th>
+                  <th>Nama</th>
+					        <th>Kelas</th>
+					        <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -22,14 +22,15 @@
 				@foreach($siswas as $data)
 				<tr>
 					<td>{{$no++}}</td>
-					<td>{{$data->siswa}}</td>
+					<td>{{$data->nama_siswa}}</td>
+          <td>{{$data->kelas->kelas}}</td>
 
 					<td>
             <form action="{{route('siswa.destroy',$data->id)}}" method="post">
             <input type="hidden" name="_method" value="Delete">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <a data-toggle="tooltip" data-placement="top" title="Edit Data" class="btn btn-success" href="/siswa/{{$data->id}}/edit"><i class="fa fa-edit"></i></a>
-            <a data-toggle="tooltip" data-placement="top" title="Detail Siswa" class="btn btn-warning" href="{{url('/siswa/'.$data->id)}}/detail"><i class="fa fa-info"></i></a>
+            <a data-toggle="tooltip" data-placement="top" title="Edit Data" class="btn btn-success" href="/admin/siswa/{{$data->id}}/edit"><i class="fa fa-edit"></i></a>
+            
             <button data-toggle="tooltip" data-placement="top" title="Hapus Data" type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Akan Menghapus ?')"><i class="fa fa-trash"></i></button>
             {{csrf_field()}}
           </form>

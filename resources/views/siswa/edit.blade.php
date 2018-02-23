@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 <div class="row">
 	<div class="col-md-12">
@@ -28,8 +28,14 @@
 
 			<div class="form-group">
 				<label class="control-lable">Kelas</label>
-				<input type="text" name="kelas" class="form-control" required="" value="{{$siswas->kelas}}">
+				<select class="form-control" name="id_kelas">
+					@foreach($kelas as $data)
+					<option value="{{$data->id}}">{{$data->kelas}}</option>
+					@endforeach
+				</select>
 			</div>
+
+			
 
 			<br>
 			<div class="pull-right">
@@ -41,5 +47,6 @@
 		</form>
 	</div>
 	</div>
+</div>
 </div>
 @endsection

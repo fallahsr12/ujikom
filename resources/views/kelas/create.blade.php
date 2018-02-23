@@ -1,29 +1,29 @@
 @extends('layouts.master')
 @section('content')
-<div class="row">
+<div class="contaier">
 	<div class="col-md-12">
 		<section class="content-header">
     		 <h1>
-    		   Tambah Data Jurusan
+    		   Tambah Data Kelas
     		 </h1>
       		<ol class="breadcrumb">
       		  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      		  <li class="fa fa-car">Jurusan</li><li class="active">Tambah Jurusan</li>
+      		  <li class="fa fa-car">Kelas</li><li class="active">Tambah Kelas</li>
       		</ol>
     	</section><br><br>
     	<div class="panel panel-danger">
-			<div class="panel-heading">Tambah Data Jurusan
+			<div class="panel-heading">Tambah Data Kelas
 		</div>
 
 		<div class="panel-body">
-		<form action="{{route('jurusan.store')}}" method="post" enctype="multipart/form-data">
+		<form action="{{route('kelas.store')}}" method="post" enctype="multipart/form-data">
 			{{csrf_field()}}
 
 			<div class="form-group">
-				<label class="control-lable">Nama Jurusan</label>
-				<input type="text" name="nama_jurusan" class="form-control" required="">
+				<label class="control-lable">Kelas</label>
+				<input type="text" name="kelas" class="form-control" required="">
 			</div>
-
+			
 			<br>
 			<div class="pull-right">
 			<div class="form-group">
@@ -34,5 +34,6 @@
 		</form>
 	</div>
 	</div>
+</div>
 </div>
 @endsection

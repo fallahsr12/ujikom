@@ -27,8 +27,12 @@
 			</div>
 
 			<div class="form-group">
-				<label class="control-lable">Mapel</label>
-				<input type="text" name="mapel" class="form-control" required="" value="{{$siswas->mapel}}">
+				<label class="control-lable">Mata Pelajaran</label>
+				<select class="form-control" name="id_mapel">
+					@foreach($mapel as $data)
+					<option value="{{$data->id}}">{{$data->mapel}}</option>
+					@endforeach
+				</select>
 			</div>
 
 			<br>
@@ -41,5 +45,6 @@
 		</form>
 	</div>
 	</div>
+</div>
 </div>
 @endsection

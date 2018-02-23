@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 <div class="row">
 	<div class="col-md-12">
@@ -22,13 +22,21 @@
 			{{csrf_field()}}
 			
 			<div class="form-group">
-				<label class="control-lable">Nama</label>
-				<input type="text" name="nama" class="form-control" required="" value="{{$siswas->nama}}">
+							<label class="control-lable">Nama Guru</label>
+							<select class="form-control" name="id_guru">
+								@foreach($guru as $data)
+								<option value="{{$data->id}}">{{$data->nama_guru}}</option>
+								@endforeach
+							</select>
 			</div>
 
 			<div class="form-group">
 				<label class="control-lable">Keterangan</label>
-				<input type="text" name="keterangan" class="form-control" required="" value="{{$siswas->kelas}}">
+				<select class="form-control" name="keterangan">
+								<option value="Sakit">Sakit</option>
+								<option value="Izin">Izin</option>
+								<option value="Alpa">Alpa</option>
+							</select>
 			</div>
 
 			<br>

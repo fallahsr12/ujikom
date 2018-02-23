@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('/');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -24,7 +24,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
 	Route::resource('supir','SupirController');
 	Route::resource('siswa','SiswaController');
 	Route::resource('guru','GuruController');
-	Route::resource('jurusan','JurusanController');
+	Route::resource('mapel','MapelController');
+	Route::resource('kelas','KelasController');
 	Route::resource('ksiswa','KSiswaController');
 	Route::resource('kguru','KGuruController');
 	Route::resource('siswa_terlambat','TerlambatController');

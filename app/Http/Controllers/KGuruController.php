@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kehadiran_guru;
+use App\Mapel;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
@@ -32,7 +33,8 @@ class KGuruController extends Controller
     public function create()
     {
         //
-        return view('kguru.create');
+        $guru = Guru::all();
+        return view('kguru.create', compact('guru')); 
     }
 
     /**
@@ -45,7 +47,7 @@ class KGuruController extends Controller
     {
         //
         $siswas = new Kehadiran_guru;
-        $siswas->id_guru=$request->nama;
+        $siswas->id_guru=$request->id_guru;
         $siswas->keterangan =$request->keterangan;
         
         $siswas->save();
@@ -74,8 +76,9 @@ class KGuruController extends Controller
     public function edit($id)
     {
         //
+        $guru=guru::all();
         $siswas = Kehadiran_guru::findOrfail($id);
-        return view('kguru.edit', compact('siswas'));
+        return view('kguru.edit', compact('siswas','guru'));
     }
 
     /**
@@ -89,7 +92,7 @@ class KGuruController extends Controller
     {
         //
         $siswas = Kehadiran_guru::findOrfail($id);
-        $siswas->nama = $request->nama;
+        $siswas->id_guru = $request->id_guru;
         $siswas->keterangan = $request->keterangan;
         $siswas->save();
         return redirect()->route('kguru.index');

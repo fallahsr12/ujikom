@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mobil;
+use Illuminate\Http\Request;
+use App\Kelas;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
-use Illuminate\Http\Request;
+use Session;
+use File;
 
-class MobilController extends Controller
+class KelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +19,8 @@ class MobilController extends Controller
     public function index()
     {
         //
-        return view('mobil.index');
+        $siswas=Kelas::all();
+        return view('kelas.index', compact('siswas'));
     }
 
     /**
@@ -28,6 +31,7 @@ class MobilController extends Controller
     public function create()
     {
         //
+        return view('kelas.create');
     }
 
     /**
@@ -39,6 +43,11 @@ class MobilController extends Controller
     public function store(Request $request)
     {
         //
+        $siswas = new Kelas;
+        $siswas->kelas=$request->kelas;
+        
+        $siswas->save();
+        return redirect('/admin/kelas');
     }
 
     /**
@@ -61,6 +70,8 @@ class MobilController extends Controller
     public function edit($id)
     {
         //
+        $siswas = Kelas::findOrfail($id);
+        return view('kelas.edit',compact('siswas'));
     }
 
     /**
@@ -73,6 +84,10 @@ class MobilController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $siswas = Kelas::findOrfail($id);
+        $siswas->kelas = $request->kelas;
+        $siswas->save();
+        return redirect()->route('kelas.index');
     }
 
     /**
@@ -84,5 +99,8 @@ class MobilController extends Controller
     public function destroy($id)
     {
         //
+        $siswas = Kelas::findOrFail($id);
+         $siswas->delete();
+         return redirect()->route('kelas.index');
     }
 }

@@ -1,31 +1,29 @@
 @extends('layouts.master')
 @section('content')
-<div class="row">
+<div class="contaier">
 	<div class="col-md-12">
 		<section class="content-header">
     		 <h1>
-    		   Edit Data Jurusan
+    		   Tambah Data Mata Pelajaran
     		 </h1>
       		<ol class="breadcrumb">
       		  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      		  <li class="fa fa-car">Jurusan</li><li class="active">Edit Jurusan</li>
+      		  <li class="fa fa-car">Mata Pelajaran</li><li class="active">Tambah Mata Pelajaran</li>
       		</ol>
     	</section><br><br>
     	<div class="panel panel-danger">
-			<div class="panel-heading">Tambah Data Jurusan
+			<div class="panel-heading">Tambah Data Mta Pelajaran
 		</div>
 
 		<div class="panel-body">
-		<form action="{{route('jurusan.update',$siswas->id)}}" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="_method" value="PUT">
-			<input type="hidden" name="_token" value="{{csrf_token()}}">
+		<form action="{{route('mapel.store')}}" method="post" enctype="multipart/form-data">
 			{{csrf_field()}}
-			
-			<div class="form-group">
-				<label class="control-lable">Nama Jurusan</label>
-				<input type="text" name="nama_jurusan" class="form-control" required="" value="{{$siswas->nama_jurusan}}">
-			</div>
 
+			<div class="form-group">
+				<label class="control-lable">Mata Pelajaran</label>
+				<input type="text" name="mapel" class="form-control" required="">
+			</div>
+			
 			<br>
 			<div class="pull-right">
 			<div class="form-group">
@@ -36,5 +34,6 @@
 		</form>
 	</div>
 	</div>
+</div>
 </div>
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\siswa;
+use App\Kelas;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
@@ -31,9 +32,9 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        //
-        return view('siswa.create');
-    }
+        
+        $kelas = Kelas::all();
+        return view('siswa.create', compact('kelas'));    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,8 +47,7 @@ class SiswaController extends Controller
         //
         $siswas = new siswa;
         $siswas->nama_siswa=$request->nama_siswa;
-        $siswas->kelas =$request->kelas;
-        $siswas->id_jurusan=$request->id_jurusan;
+        $siswas->id_kelas=$request->id_kelas;
         $siswas->save();
         return redirect('/admin/siswa');
     }
@@ -75,7 +75,8 @@ class SiswaController extends Controller
     {
         //
         $siswas = siswa::findOrfail($id);
-        return view('siswa.edit', compact('siswas'));
+        $kelas = Kelas::all();
+        return view('siswa.edit', compact('siswas','kelas'));
     }
 
     /**
@@ -90,9 +91,8 @@ class SiswaController extends Controller
         //
         
         $siswas = siswa::findOrfail($id);
-        $siswas->nama = $request->nama;
-        $siswas->kelas = $request->kelas;
-        $siswas->id_jurusan=$request->id_jurusan;
+        $siswas->nama_siswa = $request->nama_siswa;
+        $siswas->id_kelas = $request->id_kelas;
         $siswas->save();
         return redirect()->route('siswa.index');
     }

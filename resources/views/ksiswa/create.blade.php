@@ -20,18 +20,21 @@
 			{{csrf_field()}}
 
 			<div class="form-group">
-				<label class="control-lable">Nama</label>
-				<input type="text" name="nama" class="form-control" required="">
-			</div>
-
-			<div class="form-group">
-				<label class="control-lable">Kelas</label>
-				<input type="text" name="kelas" class="form-control" required="">
+				<label class="control-lable">Siswa</label>
+				<select class="form-control" name="id_siswa">
+					@foreach($siswa as $data)
+					<option value="{{$data->id}}">{{$data->nama_siswa}} - {{$data->kelas->kelas}}</option>
+					@endforeach
+				</select>
 			</div>
 
 			<div class="form-group">
 				<label class="control-lable">Keterangan</label>
-				<input type="text" name="keterangan" class="form-control" required="">
+				<select class="form-control" name="keterangan">
+								<option value="Sakit">Sakit</option>
+								<option value="Izin">Izin</option>
+								<option value="Alpa">Alpa</option>
+							</select>
 			</div>
 
 			<br>

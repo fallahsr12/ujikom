@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kehadiran_siswa;
+use App\siswa;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
@@ -31,7 +32,9 @@ class KSiswaController extends Controller
     public function create()
     {
         //
-        return view('ksiswa.create');
+        $siswa=siswa::all();
+        $kehadiran=Kehadiran_siswa::all();
+        return view('ksiswa.create',compact('siswa','keadiran'));
     }
 
     /**
@@ -44,8 +47,7 @@ class KSiswaController extends Controller
     {
         //
         $siswas = new Kehadiran_siswa;
-        $siswas->nama=$request->nama;
-        $siswas->kelas=$request->kelas;
+        $siswas->id_siswa= $request->id_siswa;
         $siswas->keterangan =$request->keterangan;
         
         $siswas->save();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Guru extends Migration
+class Mapel extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class Guru extends Migration
     public function up()
     {
         //
-        Schema::create('guru', function (Blueprint $table) {
+        Schema::create('mapel', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_guru');
             $table->string('mapel');
             $table->timestamps();
         });

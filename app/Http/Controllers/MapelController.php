@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mapel;
 use Illuminate\Http\Request;
-use App\Supir;
+use Yajra\Datatables\Html\Builder;
+use Yajra\Datatables\Datatables;
+use Session;
+use File;
 
-class SupirController extends Controller
+
+class MapelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +20,8 @@ class SupirController extends Controller
     public function index()
     {
         //
-        $supir=Supir::all();
-        return view('supir.index',compact('supir'));
-        
+        $mapel=Mapel::all();
+        return view('mapel.index',compact('mapel'));
     }
 
     /**
@@ -28,6 +32,7 @@ class SupirController extends Controller
     public function create()
     {
         //
+        return view('mapel.create');
     }
 
     /**
@@ -39,15 +44,19 @@ class SupirController extends Controller
     public function store(Request $request)
     {
         //
+        $mapel= new mapel;
+        $mapel->mapel=$request->mapel;
+        $mapel->save();
+        return redirect('admin/mapel');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Mapel $mapel)
     {
         //
     }
@@ -55,34 +64,43 @@ class SupirController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
+        $siswas = Mapel::findOrfail($id);
+        return view('mapel.edit', compact('siswas'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
+        $siswas = Mapel::findOrfail($id);
+        $siswas->mapel = $request->mapel;
+        $siswas->save();
+        return redirect()->route('mapel.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Mapel  $mapel
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+        $siswas = Mapel::findOrFail($id);
+         $siswas->delete();
+         return redirect()->route('mapel.index');
     }
 }

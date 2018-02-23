@@ -9,7 +9,7 @@
     <meta name="author" content="">
 
     <title>Piket</title>
-
+    
     <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{ asset('/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
@@ -54,21 +54,21 @@
 
   </head>
 
-  <body class="hold-transition skin-red sidebar-mini">
+  <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini text-red"><b>P</b>.com</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>PIKET</b>.com</span>
+      <span class="logo-lg text-red"><b>PIKET</b>.com</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="#" class="sidebar-toggle text-red" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
 
@@ -82,7 +82,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span>Alexander </span>
+              <span>Admin Piket </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -107,23 +107,23 @@
                     <a href="#">Friends</a>
                   </div>
                 </div>
-                <!-- /.row -->
+                <!-- /.row -->                        
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-primary btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" class="btn btn-danger btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                  </form>
                 </div>
               </li>
             </ul>
           </li>
           <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -143,30 +143,30 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
+      
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">BERANDA</li>
         <li class="active">
           <a href="{{route('guru.index')}}">
-            <i class="fa fa-mortar-board"></i> <span>Guru</span>
+            <i class="fa fa-user-secret text-red"></i> <span>Guru</span>
             <span class="pull-right-container">
             </span>
           </a>
         </li>
 
         <li class="active">
-          <a href="{{route('jurusan.index')}}">
-            <i class="fa fa-location-arrow"></i> <span>Jurusan</span>
+          <a href="{{route('kelas.index')}}">
+            <i class="fa fa-steam text-purple"></i> <span>Kelas</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+
+        <li class="active">
+          <a href="{{route('mapel.index')}}">
+            <i class="fa fa-recycle text-blue"></i> <span>Mata Pelajaran</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -174,7 +174,7 @@
 
         <li class="active">
           <a href="{{route('siswa.index')}}">
-            <i class="fa fa-user"></i> <span>Siswa</span>
+            <i class="fa fa-user text-orange"></i> <span>Siswa</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -183,7 +183,7 @@
         <li class="header">KEHADIRAN</li>
         <li class="active">
           <a href="{{route('kguru.index')}}">
-            <i class="fa fa-list"></i> <span>Kehadiran Guru</span>
+            <i class="fa fa-list text-green"></i> <span>Kehadiran Guru</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -191,7 +191,7 @@
 
         <li class="active">
           <a href="{{route('ksiswa.index')}}">
-            <i class="fa fa-list"></i> <span>Kehadiran Siswa</span>
+            <i class="fa fa-list text-green"></i> <span>Kehadiran Siswa</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -205,16 +205,6 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
 
     <!-- Main content -->
     @yield('content')

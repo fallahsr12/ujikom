@@ -13,6 +13,11 @@ class Guru extends Model
 
  	public function kehadiran_guru() {
  		
- 		return $this ->hasMany('App\kehadiran_guru');
+ 		return $this->hasMany('App\kehadiran_guru','id_guru');
+ 	}
+ 	
+ 	public function Mapel() {
+ 		
+ 		return $this->belongsTo('App\Mapel','id_mapel');
  	}
 }

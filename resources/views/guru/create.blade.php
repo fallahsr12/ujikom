@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<div class="row">
-	<div class="col-md-12">
+<div class="container">
+	<div class="col-md-11">
 		<section class="content-header">
     		 <h1>
     		   Tambah Data Guru
@@ -20,13 +20,22 @@
 			{{csrf_field()}}
 
 			<div class="form-group">
+				<label class="control-lable">NIK</label>
+				<input type="text" name="nik" class="form-control" required="">
+			</div>
+
+			<div class="form-group">
 				<label class="control-lable">Nama</label>
 				<input type="text" name="nama_guru" class="form-control" required="">
 			</div>
 
 			<div class="form-group">
-				<label class="control-lable">Mapel</label>
-				<input type="text" name="mapel" class="form-control" required="">
+				<label class="control-lable">Mata Pelajaran</label>
+				<select class="form-control" name="id_mapel">
+					@foreach($mapel as $data)
+					<option value="{{$data->id}}">{{$data->mapel}}</option>
+					@endforeach
+				</select>
 			</div>
 
 			<br>
@@ -39,5 +48,6 @@
 		</form>
 	</div>
 	</div>
+</div>
 </div>
 @endsection
