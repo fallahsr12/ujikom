@@ -2,8 +2,8 @@
 @section('content')<br><br>
 <div class="container">
 <div class="box">
-            <div class="box-header" style="background: #9932cc">
-              <h3 class="box-title" >Data Guru</h3>
+            <div class="box-header text-default" style="background: #26a65b">
+              <h3 class="box-title ">Data Guru</h3>
             </div><br>
             &nbsp&nbsp<a class="btn btn-primary" href="{{ route('guru.create') }}">Tambah</a>
             <!-- /.box-header -->

@@ -4,15 +4,15 @@
 	<div class="col-md-12">
 		<section class="content-header">
     		 <h1>
-    		   Edit Data Jurusan
+    		   Edit Data Kelas
     		 </h1>
       		<ol class="breadcrumb">
       		  <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      		  <li class="fa fa-car">Jurusan</li><li class="active">Edit Jurusan</li>
+      		  <li class="fa fa-car">Kelas</li><li class="active">Edit Kelas</li>
       		</ol>
     	</section><br><br>
     	<div class="panel panel-danger">
-			<div class="panel-heading">Tambah Data Jurusan
+			<div class="panel-heading">Edit Data Kelas
 		</div>
 
 		<div class="panel-body">
@@ -22,10 +22,10 @@
 			{{csrf_field()}}
 			
 			<div class="form-group">
-				<label class="control-lable">Mata Pelajaran</label>
-				<select class="form-control" name="id_mapel">
-					@foreach($mapel as $data)
-					<option value="{{$data->id}}">{{$data->mapel}}</option>
+				<label class="control-lable">Kelas</label>
+				<select class="form-control" name="kelas">
+					@foreach($siswas as $data)
+					<option value="{{$data->id}}">{{$data->id}}</option>
 					@endforeach
 				</select>
 			</div>

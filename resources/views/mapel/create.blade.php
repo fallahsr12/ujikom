@@ -12,7 +12,7 @@
       		</ol>
     	</section><br><br>
     	<div class="panel panel-danger">
-			<div class="panel-heading">Tambah Data Mta Pelajaran
+			<div class="panel-heading">Tambah Data Mata Pelajaran
 		</div>
 
 		<div class="panel-body">

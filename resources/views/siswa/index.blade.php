@@ -2,7 +2,7 @@
 @section('content')<br><br>
 <div class="container">
 <div class="box">
-            <div class="box-header" style="background: #9932cc">
+            <div class="box-header" style="background: #26a65b">
               <h3 class="box-title" >Data Siswa</h3>
             </div><br>
             &nbsp&nbsp<a class="btn btn-primary" href="{{ route('siswa.create') }}">Tambah</a>

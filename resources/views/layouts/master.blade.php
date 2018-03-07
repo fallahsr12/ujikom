@@ -61,14 +61,14 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini text-red"><b>P</b>.com</span>
+      <span class="logo-mini text-white"><b>P</b>.com</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg text-red"><b>PIKET</b>.com</span>
+      <span class="logo-lg text-white"><b>PIKET</b>.com</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle text-red" data-toggle="push-menu" role="button">
+      <a href="#" class="sidebar-toggle text-white" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
 
@@ -150,7 +150,7 @@
         <li class="header">BERANDA</li>
         <li class="active">
           <a href="{{route('guru.index')}}">
-            <i class="fa fa-user-secret text-red"></i> <span>Guru</span>
+            <i class="fa fa-user-secret text-green"></i> <span>Guru</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -158,7 +158,7 @@
 
         <li class="active">
           <a href="{{route('kelas.index')}}">
-            <i class="fa fa-steam text-purple"></i> <span>Kelas</span>
+            <i class="fa fa-steam text-green"></i> <span>Kelas</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -166,7 +166,7 @@
 
         <li class="active">
           <a href="{{route('mapel.index')}}">
-            <i class="fa fa-recycle text-blue"></i> <span>Mata Pelajaran</span>
+            <i class="fa fa-recycle text-green"></i> <span>Mata Pelajaran</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -174,7 +174,7 @@
 
         <li class="active">
           <a href="{{route('siswa.index')}}">
-            <i class="fa fa-user text-orange"></i> <span>Siswa</span>
+            <i class="fa fa-user text-green"></i> <span>Siswa</span>
             <span class="pull-right-container">
             </span>
           </a>
