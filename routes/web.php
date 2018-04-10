@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
 	Route::resource('mobil','MobilController');
 	Route::resource('supir','SupirController');
@@ -29,4 +31,16 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','role:admin']],function(){
 	Route::resource('ksiswa','KSiswaController');
 	Route::resource('kguru','KGuruController');
 	Route::resource('siswa_terlambat','TerlambatController');
+	Route::get('/pdf', 'PdfController@pdf');
+	Route::get('pdfview',array('as'=>'pdfview','uses'=>'PdfController@pdfview'));
 });
+
+	Route::get('/kguru/pdf',[
+    'uses'  =>'KGuruController@getPdf',
+    'as'    =>'kguru/pdf',
+]);
+
+	Route::get('/ksiswa/pdf',[
+    'uses'  =>'KSiswaController@getPdf',
+    'as'    =>'ksiswa/pdf',
+]);

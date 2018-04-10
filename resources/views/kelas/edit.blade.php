@@ -23,11 +23,7 @@
 			
 			<div class="form-group">
 				<label class="control-lable">Kelas</label>
-				<select class="form-control" name="kelas">
-					@foreach($siswas as $data)
-					<option value="{{$data->id}}">{{$data->id}}</option>
-					@endforeach
-				</select>
+				<input type="text" name="kelas" class="form-control" value="{{$siswas->kelas}}">
 			</div>
 
 			<br>

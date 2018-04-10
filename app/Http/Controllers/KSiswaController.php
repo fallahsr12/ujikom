@@ -9,6 +9,9 @@ use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
 use File;
+use PDF;
+use DB;
+use App\Kelas;
 
 class KSiswaController extends Controller
 {
@@ -110,5 +113,24 @@ class KSiswaController extends Controller
          $siswas = Kehadiran_siswa::findOrFail($id);
          $siswas->delete();
          return redirect()->route('ksiswa.index');
+    }
+    public function downloadPDF(Request $request){
+        $a = $request->a; 
+        $b = $request->b;
+        $absen = Kehadiran_siswa::whereBetween('created_at', [$a, $b])->get(); 
+      $pem = Kehadiran_siswa::all();
+
+      $pdf = PDF::loadView('ksiswa.pdfabsensi', compact('pem','a','b'));
+      return $pdf->download('ksiswa.pdf');
+
+    }
+
+    public function getPdf()
+    {
+        $siswas = Kehadiran_siswa::all();
+
+        $pdf = PDF::loadView('ksiswa.pdf', compact('siswas'))->setPaper('a4');
+
+        return $pdf->stream();
     }
 }

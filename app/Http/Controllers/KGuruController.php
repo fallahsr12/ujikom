@@ -9,6 +9,8 @@ use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
 use Session;
 use File;
+use PDF;
+use DB; 
 use App\Guru;
 
 class KGuruController extends Controller
@@ -110,5 +112,28 @@ class KGuruController extends Controller
          $siswas = Kehadiran_guru::findOrFail($id);
          $siswas->delete();
          return redirect()->route('kguru.index');
+    }
+ 
+    public function downloadPDF(Request $request){
+        $a = $request->a; 
+        $b = $request->b;
+        $absen = Kehadiran_guru::whereBetween('created_at', [$a, $b])->get(); 
+      $pem = Kehadiran_guru::all();
+
+      $pdf = PDF::loadView('kguru.pdfabsensi', compact('pem','a','b'));
+      return $pdf->download('kguru.pdf');
+
+      //ada apa dengan ferlan
+
+    }
+
+
+    public function getPdf()
+    {
+        $siswas = Kehadiran_guru::all();
+
+        $pdf = PDF::loadView('kguru.pdf', compact('siswas'))->setPaper('a4');
+
+        return $pdf->stream();
     }
 }

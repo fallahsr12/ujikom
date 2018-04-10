@@ -180,10 +180,10 @@
           </a>
         </li>
 
-        <li class="header">KEHADIRAN</li>
+        <li class="header">ABSENSI</li>
         <li class="active">
           <a href="{{route('kguru.index')}}">
-            <i class="fa fa-list text-green"></i> <span>Kehadiran Guru</span>
+            <i class="fa fa-list text-green"></i> <span>Absensi Guru</span>
             <span class="pull-right-container">
             </span>
           </a>
@@ -191,7 +191,7 @@
 
         <li class="active">
           <a href="{{route('ksiswa.index')}}">
-            <i class="fa fa-list text-green"></i> <span>Kehadiran Siswa</span>
+            <i class="fa fa-list text-green"></i> <span>Absensi Siswa</span>
             <span class="pull-right-container">
             </span>
           </a>

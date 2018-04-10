@@ -3,26 +3,33 @@
 <div class="container">
 <div class="box">
             <div class="box-header" style="background: #26a65b">
-              <h3 class="box-title" >Kehadiran Siswa</h3>
+              <h3 class="box-title" >Absensi Siswa</h3>
+              <a class="btn btn-primary pull-right" href="{{ route('ksiswa.create') }}">Tambah</a>
             </div><br>
-            &nbsp&nbsp<a class="btn btn-primary" href="{{ route('ksiswa.create') }}">Tambah</a>
+            
+            <form action="{{url('/admin/absensi')}}" method="post">
+              {{csrf_field()}}
+              <div class="form-group">&nbsp&nbsp&nbsp&nbsp
+            <a href="{{route('ksiswa/pdf')}}" class="btn btn-success">Print to pdf</a>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="data" class="table table-striped">
                 <thead>
                 <tr>
-                 	<th>No</th>
-					<th>Nama Siswa</th>
-          <th>Kelas</th>
-					<th>Keterangan</th>
-					<th>Action</th>
+                  <th>No</th>
+                 	<th>Tanggal Absen</th>
+                  <th>Nama Siswa</th>
+                  <th>Kelas</th>
+                  <th>Keterangan</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @php $no=1 @endphp
 				@foreach($siswas as $data)
 				<tr>
-					<td>{{$no++}}</td>
+          <td>{{$no++}}</td>
+					<td>{{$data->created_at->format('d M Y')}}</td>
 					<td>{{$data->siswa->nama_siswa}}</td>
           <td>{{$data->siswa->kelas->kelas}}</td>
 					<td>{{$data->keterangan}}</td>
